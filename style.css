@@ -44,7 +44,7 @@ nav ul li {
 .container {
     min-height: 70vh;
     background-color: black;
-    color:burlywood;
+    color:black;
     display: flex;
     margin: 20px auto;
     width: 70%;
@@ -76,4 +76,55 @@ nav ul li {
 
 #progressBar {
     width: 80vw;
+}
+
+/* Inside main */
+
+.songList h2 {
+    margin: 14px;
+    color: black;
+}
+
+.songItemContainer {
+    margin-top: 28px;
+}
+
+.songItems {
+    height: 45px;
+    display: flex;
+    background-color: aliceblue;
+    /* width:  */
+    color:black;
+    margin: 10px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 23px;
+
+}
+
+.songItems img{
+    margin: 0 20px;
+    border-radius: 34px;
+    
+}
+
+.time {
+    margin: 0 23px;
+}
+
+.time i {
+    cursor: pointer;
+}
+
+/* Inside bottom */
+
+.songInfo {
+    position: absolute;
+    left: 2vw
+}
+.songInfo img {
+    height: 50px;
+    width: 70px;
+    opacity: 50%;
+    transition: 1s ease-in;
 }
