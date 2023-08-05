@@ -1,5 +1,5 @@
 // Declare variables
-let songElement = new Audio('./Music/music.mp3')
+let songElement = new Audio('./Music/1.mp3')
 let songIndex = 0
 let centerPlay = document.getElementById('centerPlay')
 let progressBar = document.getElementById('progressBar')
@@ -9,34 +9,34 @@ let songItems = Array.from(document.getElementsByClassName('songItems'))
 
 let songs = [
     {songName: "Summar-walk",
-     filePath: "./Music/music.mp3",
+     filePath: "./Music/1.mp3",
      coverPath: "./Photos/cover.jpg"   
     },
     {songName: "Forest-lullbaby",
-     filePath: "./Music/music1.mp3",
+     filePath: "./Music/2.mp3",
      coverPath: "./Photos/cover.jpg"   
     },
     {songName: "Reflected-light",
-     filePath: "./Music/music2.mp3",
+     filePath: "./Music/3.mp3",
      coverPath: "./Photos/cover.jpg"   
     },
     {songName: "The beat of nature",
-     filePath: "./Music/music3.mp3",
+     filePath: "./Music/4.mp3",
      coverPath: "./Photos/cover.jpg"   
     },
     {songName: "Waterfall",
-     filePath: "./Music/music4.mp3",
+     filePath: "./Music/5.mp3",
      coverPath: "./Photos/cover.jpg"   
     },
     {songName: "Electronic-rock",
-     filePath: "./Music/music5.mp3",
+     filePath: "./Music/6.mp3",
      coverPath: "./Photos/cover.jpg"   
     },
 ]
 
-// looping
+// looping | apply the song name
 songItems.forEach((element, i) => {
-    console.log(element, i)
+    //console.log(element, i)
     element.getElementsByClassName("songNames")[0].innerText = songs[i].songName
 })
 
@@ -71,5 +71,36 @@ songElement.addEventListener("timeupdate", () => {
 
 progressBar.addEventListener('change', () => {
     songElement.currentTime = progressBar.value * songElement.duration / 100
-
 })
+
+
+//create function
+const songPlay = () => {
+    Array.from(document.getElementsByClassName('songItemPlay')).forEach((element) => {
+        element.classList.remove('fa-pause-circle')
+        element.classList.add('fa-play-circle')
+    })
+}
+
+
+// song play in list
+Array.from(document.getElementsByClassName('songItemPlay')).forEach((element) => {
+    element.addEventListener('click', (e) => {
+        //console.log("Clicked element ID:", e.target)
+        songPlay()
+        songIndex = parseInt(e.target.id)
+        //console.log(`Index ${index}`)
+        e.target.classList.remove('fa-play-circle')
+        e.target.classList.add('fa-pause-circle')
+        let sourcePath = `Music/${songIndex}.mp3`;
+        songElement.src = sourcePath
+        songElement.currentTime = 0
+        songElement.play()
+        centerPlay.classList.remove('fa-play-circle')
+        centerPlay.classList.add('fa-pause-circle')        
+    })
+})
+
+
+
+
