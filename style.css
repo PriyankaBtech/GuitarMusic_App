@@ -23,6 +23,7 @@ nav ul {
 
 nav ul li {
     padding: 0 13px;
+    cursor: pointer;
 }
 
 .brand img {
@@ -101,8 +102,8 @@ nav ul li {
 }
 
 .songItems:hover {
-    filter: drop-shadow(0 0 0.75rem black);
-    height: 50px;
+    filter: drop-shadow(0 0 0.75rem rgb(12, 12, 12));
+    height: 54px;
     cursor: pointer;  
 }
 

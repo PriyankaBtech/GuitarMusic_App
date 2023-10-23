@@ -1,14 +1,3 @@
-// Declare variables
-let songElement = new Audio() //  create an HTML5 Audio element
-console.log(songElement)
-let currentSongIndex = 0 // to keep track of the currently playing song
-let centerPlay = document.getElementById('centerPlay')
-let progressBar = document.getElementById('progressBar')
-let gif = document.getElementById('gif')
-let songItems = Array.from(document.getElementsByClassName('songItems'))
-let isPlaying = false // flag to track if a song is currently playing
-
-
 
 let songs = [
     {songName: "Summar-walk",
@@ -36,6 +25,16 @@ let songs = [
      coverPath: "./Photos/cover.jpg"   
     },
 ]
+
+// Declare variables
+let songElement = new Audio() //  create an HTML5 Audio element
+let centerPlay = document.getElementById('centerPlay')
+let progressBar = document.getElementById('progressBar')
+let gif = document.getElementById('gif')
+let songItems = Array.from(document.getElementsByClassName('songItems'))
+
+let currentSongIndex = 0 // to keep track of the currently playing song
+let isPlaying = false // flag to track if a song is currently playing
 
 
 // Function to play the selected song
@@ -88,7 +87,6 @@ songElement.addEventListener("timeupdate", () => {
 
     //connect song to progress bar
     let progress = parseInt((songElement.currentTime/songElement.duration) * 100)
-    console.log(progress)
     progressBar.value = progress
 })
 
