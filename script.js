@@ -1,5 +1,5 @@
 // Declare variables
-let songElement = new Audio('./Music/1.mp3') //  create an HTML5 Audio element
+let songElement = new Audio() //  create an HTML5 Audio element
 console.log(songElement)
 let currentSongIndex = 0 // to keep track of the currently playing song
 let centerPlay = document.getElementById('centerPlay')
@@ -118,6 +118,16 @@ document.getElementById('forwardButton').addEventListener('click', playNextSong)
 document.getElementById('backwardButton').addEventListener('click', playPreviousSong)
 
 
+// Function to update the UI to indicate the currently playing song
+function updatePlayingUI() {
+    // remove the 'playing' class from all song items
+    songItems.forEach(element => {
+        element.classList.remove('playing')
+    })
+
+    // add the 'playing' class to the currently playing song item
+    songItems[currentSongIndex].classList.add('playing')
+}
 
 
 
