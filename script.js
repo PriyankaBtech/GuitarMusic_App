@@ -1,10 +1,13 @@
 // Declare variables
-let songElement = new Audio('./Music/1.mp3')
-let songIndex = 0
+let songElement = new Audio('./Music/1.mp3') //  create an HTML5 Audio element
+console.log(songElement)
+let currentSongIndex = 0 // to keep track of the currently playing song
 let centerPlay = document.getElementById('centerPlay')
 let progressBar = document.getElementById('progressBar')
 let gif = document.getElementById('gif')
 let songItems = Array.from(document.getElementsByClassName('songItems'))
+let isPlaying = false // flag to track if a song is currently playing
+
 
 
 let songs = [
@@ -34,33 +37,53 @@ let songs = [
     },
 ]
 
-// looping | apply the song name
+
+// Function to play the selected song
+function playSong(filePath) {
+    songElement.src = filePath
+    songElement.play()
+    isPlaying = true // set the flag to indicate that a song is playing
+    updatePlayingUI() // update the UI to indicate the playing song   
+}
+
+// Loop through songItems and apply the song name
 songItems.forEach((element, i) => {
-    //console.log(element, i)
     element.getElementsByClassName("songNames")[0].innerText = songs[i].songName
+
+    // add a click event listener to each song item
+    element.addEventListener('click', () => {
+        // add the file path of the clicked song
+        const filePath = songs[i].filePath
+        playSong(filePath)
+        currentSongIndex = i // update the current song index
+        updatePlayingUI() // update the UI to indicate the playing song
+        centerPlay.classList.add('fa-pause-circle')
+        gif.style.opacity = 1
+        console.log('Clicked on:', songs[i].songName, 'File Path:', filePath)
+    })
 })
 
 
-//handle play and pause click
-centerPlay.addEventListener('click', () => {
-    if(songElement.paused || songElement.currentTime <= 0) {
-        songElement.play();
-        centerPlay.classList.remove('fa-play-circle')
-        centerPlay.classList.add('fa-pause-circle')
-        gif.style.opacity = 1
-    } 
-    else {
-        songElement.pause();
+// Handle clicks on the center play button to toggle playback
+document.getElementById('centerPlay').addEventListener('click', () => {
+    if (isPlaying) {
+        songElement.pause() // pause the currently playing song
+        isPlaying = false // set the flag to indicate that no song is playing
         centerPlay.classList.remove('fa-pause-circle')
         centerPlay.classList.add('fa-play-circle')
         gif.style.opacity = 0
+
+    } else {
+        playSong(songs[currentSongIndex].filePath);
+        centerPlay.classList.remove('fa-play-circle')
+        centerPlay.classList.add('fa-pause-circle')
+        gif.style.opacity = 1
     }
 })
 
-// audioElement.play()
 
-// addEventListener() => Listen to events
-songElement.addEventListener("timeupdate", () => {
+// Set time update in progress bar
+songElement.addEventListener("timeupdate", () => {    
     console.log("Time Update")
 
     //connect song to progress bar
@@ -74,32 +97,33 @@ progressBar.addEventListener('change', () => {
 })
 
 
-//create function
-const songPlay = () => {
-    Array.from(document.getElementsByClassName('songItemPlay')).forEach((element) => {
-        element.classList.remove('fa-pause-circle')
-        element.classList.add('fa-play-circle')
-    })
+// Function to play the next song
+function playNextSong() {
+    if (isPlaying) {
+        currentSongIndex = (currentSongIndex + 1) % songs.length
+        playSong(songs[currentSongIndex].filePath)     
+    }
 }
 
+// Function to play the previous song
+function playPreviousSong() {
+    if (isPlaying) {
+        currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length
+        playSong(songs[currentSongIndex].filePath)               
+    }
+}
 
-// song play in list
-Array.from(document.getElementsByClassName('songItemPlay')).forEach((element) => {
-    element.addEventListener('click', (e) => {
-        //console.log("Clicked element ID:", e.target)
-        songPlay()
-        songIndex = parseInt(e.target.id)
-        //console.log(`Index ${index}`)
-        e.target.classList.remove('fa-play-circle')
-        e.target.classList.add('fa-pause-circle')
-        let sourcePath = `Music/${songIndex}.mp3`;
-        songElement.src = sourcePath
-        songElement.currentTime = 0
-        songElement.play()
-        centerPlay.classList.remove('fa-play-circle')
-        centerPlay.classList.add('fa-pause-circle')        
-    })
-})
+// Handle clicks on the forward and backward buttons
+document.getElementById('forwardButton').addEventListener('click', playNextSong)
+document.getElementById('backwardButton').addEventListener('click', playPreviousSong)
+
+
+
+
+
+
+
+
 
 
 

@@ -111,11 +111,17 @@ nav ul li {
     border-radius: 34px;    
 }
 
-.time {
+.songItems.playing {
+    background-color: #e2e88b;
+    transition: 0.5s;
+    
+}
+
+.music {
     margin: 0 23px;
 }
 
-.time i {
+.music i {
     cursor: pointer;
 }
 
