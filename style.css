@@ -103,7 +103,7 @@ nav ul li {
 
 .songItems:hover {
     filter: drop-shadow(0 0 0.75rem rgb(12, 12, 12));
-    height: 54px;
+    height: 55gitpx;
     cursor: pointer;  
 }
 
@@ -115,6 +115,7 @@ nav ul li {
 .songItems.playing {
     background-color: #e2e88b;
     transition: 0.5s;
+    height: 55px;
     
 }
 
