@@ -26,7 +26,7 @@ Link : https://priyankaguitarmusicapp.netlify.app/
 
 ## Acknowledgment
 
-The project was inspired by the Shopify website. This project was created with guidance from the CodeWithHarry YouTube channel.
+The project was inspired by the spotify website. This project was created with guidance from the CodeWithHarry YouTube channel.
 
 
 ## Features What I Add and Change 
