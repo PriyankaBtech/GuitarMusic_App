@@ -1,4 +1,7 @@
-# Guiter Music Webapp
+# Guitar Music Webapp
+
+## Introduction
+Guitar Music App is a simple web application designed for guitar enthusiasts to explore, practice, and play their favorite guitar songs.
 
 ![Screenshot (775)](https://github.com/PriyankaBtech/GuitarMusic_App/assets/109729930/35bd77a2-1f47-428c-a3ef-cc53a2f54f95)
 Link : https://priyankaguitarmusicapp.netlify.app/
@@ -21,7 +24,7 @@ Link : https://priyankaguitarmusicapp.netlify.app/
 - Skip the music track using the next and prev buttons.
 - Adjust the music using the slider.
 
-## Acknowledgments
+## Acknowledgment
 
 The project was inspired by the Shopify website. This project was created with guidance from the CodeWithHarry YouTube channel.
 
